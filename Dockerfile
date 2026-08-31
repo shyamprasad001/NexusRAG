@@ -22,5 +22,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Render sets the PORT environment variable automatically
 EXPOSE 10000
 
-# Run the application, binding to the port provided by the environment
-CMD ["sh", "-c", "waitress-serve --host=0.0.0.0 --port=${PORT:-10000} app:app"]
+# Run the application, binding to the port exposed above
+CMD ["waitress-serve", "--host=0.0.0.0", "--port=10000", "app:app"]
