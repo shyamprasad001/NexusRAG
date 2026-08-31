@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusRAG - Intelligent PDF Insights</title>
+    <meta name="description" content="Upload your PDF documents and ask questions instantly with AI.">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="background-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <main class="container">
+        <header class="glass-panel text-center">
+            <h1><i class="fa-solid fa-brain glow-icon"></i> NexusRAG</h1>
+            <p>Upload a PDF and unlock insights with Google Gemini AI</p>
+        </header>
+
+        <section class="upload-section glass-panel">
+            <div id="drop-zone" class="drop-zone">
+                <i class="fa-solid fa-cloud-arrow-up drop-icon"></i>
+                <p>Drag & Drop your PDF here</p>
+                <span class="or-text">OR</span>
+                <input type="file" id="file-input" accept=".pdf" hidden>
+                <button id="browse-btn" class="btn-primary">Browse Files</button>
+            </div>
+            <div id="upload-status" class="status-msg hidden"></div>
+        </section>
+
+        <section class="chat-section glass-panel disabled" id="chat-container">
+            <div class="chat-box" id="chat-box">
+                <div class="message system-msg">
+                    <div class="avatar"><i class="fa-solid fa-robot"></i></div>
+                    <div class="msg-content">Welcome! Please upload a PDF to begin analyzing.</div>
+                </div>
+            </div>
+            <div class="input-area">
+                <input type="text" id="question-input" placeholder="Ask a question about your document..." disabled>
+                <button id="send-btn" class="btn-send" disabled>
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
