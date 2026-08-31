@@ -13,7 +13,13 @@ load_dotenv()
 
 # Global variables to hold our state
 global_vectorstore = None
-embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+embeddings = None
+
+def get_embeddings():
+    global embeddings
+    if embeddings is None:
+        embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+    return embeddings
 
 def process_pdf_to_vectorstore(pdf_path):
     global global_vectorstore
@@ -34,7 +40,7 @@ def process_pdf_to_vectorstore(pdf_path):
         # Use an in-memory chroma store for simplicity and to avoid file locking issues
         global_vectorstore = Chroma.from_texts(
             texts=chunks, 
-            embedding=embeddings
+            embedding=get_embeddings()
         )
         return "SUCCESS"
     except Exception as e:

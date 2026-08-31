@@ -23,4 +23,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 10000
 
 # Run the application, binding to the port provided by the environment
-CMD ["sh", "-c", "waitress-serve --port=${PORT:-10000} app:app"]
+CMD ["sh", "-c", "waitress-serve --host=0.0.0.0 --port=${PORT:-10000} app:app"]
