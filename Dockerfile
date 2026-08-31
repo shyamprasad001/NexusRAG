@@ -19,8 +19,8 @@ COPY --chown=user . $HOME/app
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Expose port 7860, which is required by Hugging Face Spaces
-EXPOSE 7860
+# Render sets the PORT environment variable automatically
+EXPOSE 10000
 
-# Run the application
-CMD ["waitress-serve", "--port=7860", "app:app"]
+# Run the application, binding to the port provided by the environment
+CMD ["sh", "-c", "waitress-serve --port=${PORT:-10000} app:app"]
