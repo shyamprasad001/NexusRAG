@@ -17,7 +17,7 @@ embeddings = None
 def get_embeddings():
     global embeddings
     if embeddings is None:
-        embeddings = GoogleGenerativeAIEmbeddings(model="models/text-embedding-004")
+        embeddings = GoogleGenerativeAIEmbeddings(model="models/gemini-embedding-2")
     return embeddings
 
 def process_pdf_to_vectorstore(pdf_path):
